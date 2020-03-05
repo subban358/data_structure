@@ -1,25 +1,27 @@
 #include <stdio.h>
+void sort(int arr[], int n)
+{
+    int k = 0;
+    for(int i = 0; i < n; i ++)
+    {
+        int temp = arr[i];
+        int hole = i;
+        while (hole >= 0 && arr[hole-1] >= temp)
+        {
+            arr[hole] = arr[hole-1];
+            hole--;
+        }
+        arr[hole] = temp;
+    }
+    while(n)
+    {
+        printf("%d ",arr[k++]);
+        n--;
+    }
+}
 int main()
 {
-    int size,a[100],min,i,j,temp;
-    printf("Size of array:");
-    scanf("%d",&size);
-    printf("Enter the unsorted array: ");
-    for(i=0;i<size;i++)
-        scanf("%d",&a[i]);
-    
-    for(i=1;i<size;i++)
-    {
-        temp=a[i];
-        j=i-1;
-        while(j>=0 && a[j]>temp)
-        {
-            a[j+1]=a[j--];
-        }
-        a[j+1]=temp;
-    }
-    printf("Sorted array: ");
-    for(i=0;i<size;i++)
-        printf("%d ",a[i]);
+    int arr[5] = {8,7,9,3,1};
+    sort(arr, 5);
     return 0;
 }
